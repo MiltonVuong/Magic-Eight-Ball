@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="Milton Vuong">
+  <title>Magic 8 Ball</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <script>
+
+    // Array of possible answers
+    const answers = [
+      "The stars say yes, but patience is key.",
+      "No, but a better opportunity awaits.",
+      "Yes, and it will bring unexpected joy.",
+      "No, but don’t lose hope; things will turn around.",
+      "Yes, and it will happen sooner than you think.",
+      "No, but this is a chance to learn and grow.",
+      "Yes, and it will open new doors for you.",
+      "No, but something even better is on the way."
+    ];
+
+    // Function to get a random answer
+    function getRandomAnswer() {
+      const randomIndex = Math.floor(Math.random() * answers.length);
+      return answers[randomIndex];
+    }
+
+    // Function to ask a question and display the answer
+    function askQuestion() {
+      let continueAsking = true;
+      while (continueAsking) {
+        // Prompt user to ask question or exit
+        const question = prompt("What would you like to ask? Enter 'exit' to quit:");
+        // If cancel is clicked tell the user to follow instructions
+        if (question === null) {
+          alert("Please ask a question or enter 'exit' to quit.");
+        // User entered exit so exit the loop
+        } else if (question.toLowerCase() === 'exit') {
+          continueAsking = false;
+          alert("Your future is in sight, good luck!");
+        // User entered a question so display the random answer
+        } else if (question) {
+          const answer = getRandomAnswer();
+          alert(`Magic 8 Ball says: ${answer}`);
+        // User entered an empty string so tell them to follow instructions
+        } else {
+          alert("Please ask a question or enter 'exit' to quit.");
+        }
+      }
+    }
+
+    // Start the game on loading the page
+    window.onload = askQuestion;
+  </script>
+</body>
+
+</html>
